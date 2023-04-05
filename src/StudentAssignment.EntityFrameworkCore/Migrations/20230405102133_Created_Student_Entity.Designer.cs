@@ -13,7 +13,7 @@ using Volo.Abp.EntityFrameworkCore;
 namespace StudentAssignment.Migrations
 {
     [DbContext(typeof(StudentAssignmentDbContext))]
-    [Migration("20230405114419_Created_Student_Entity")]
+    [Migration("20230405102133_Created_Student_Entity")]
     partial class CreatedStudentEntity
     {
         /// <inheritdoc />
@@ -55,7 +55,7 @@ namespace StudentAssignment.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ExtraProperties")
                         .HasColumnType("nvarchar(max)")
@@ -78,9 +78,6 @@ namespace StudentAssignment.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Email")
-                        .IsUnique();
 
                     b.ToTable("AppStudents", (string)null);
                 });
